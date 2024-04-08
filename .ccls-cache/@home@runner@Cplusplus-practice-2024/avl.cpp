@@ -44,17 +44,21 @@ avlNode *insertToAvl(avlNode *node, int value){
 avlNode *balanceNode(avlNode *node, int value){
   int balFact = getBalFact(node);
 
+
+   // LL case
   if(balFact > 1 && value < node->left->value)
     return RR(node);
 
+  // RR case
   if(balFact < -1 && value > node->right->value)
     return LR(node);
 
+  // LR case
   if(balFact > 1 && value > node->left->value){
     node->left = LR(node->left);
     return RR(node);}
 
-
+  // RL case
   if(balFact < -1 && value < node->right->value){
     node->right = RR(node->right);
     return LR(node);
