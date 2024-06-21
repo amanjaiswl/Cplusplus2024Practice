@@ -3,13 +3,13 @@
 
 using namespace std;
 
-double newton(int x, double tolerance = 0.0001) {
+double newton(int x, double errorMargin = 0.0001) {
     if (x == 0) return 0;
 
     double root = x;
     double lastRoot = 0;
 
-    while (abs(root - lastRoot) > tolerance) {
+    while (abs(root - lastRoot) > errorMargin) {
         lastRoot = root;
         root = (lastRoot + x / lastRoot) / 2;
     }
